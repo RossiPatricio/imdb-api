@@ -1,7 +1,15 @@
 from scraping_imdb import *
-from ducksearch import *
+from duck_search import *
 
-user_input = input('Search: ')
-response = duck_search(user_input)
-content = scrap_imdb(response)
-print(content)
+archivo = r'C:\Users\PRossi\code\movie-info\movies.txt'
+
+def movie_info(search):
+    url = get_url(search)
+    content = scrap_imdb(url)
+    return content
+
+
+with open(archivo, 'r') as file_object:
+    content = file_object.readlines()
+    for line in content:
+        print(F'{movie_info(line)}\n')
