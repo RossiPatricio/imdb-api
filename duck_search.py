@@ -8,8 +8,8 @@ def duck_search(termino):
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.text, "html.parser")
     resultados = []
-    for link in soup.select(".result__title a"):
-        enlace = link["href"]
+    for first_url in soup.select(".result__title a"):
+        enlace = first_url["href"]
         resultados.append(enlace)
 
     return resultados[:1]
@@ -19,16 +19,9 @@ def get_url(search):
     result = duck_search(input)
     if result:
         enlace = result[0]
-        # Verificamos si es un enlace de redirección de DuckDuckGo
         parsed = urllib.parse.urlparse(enlace)
         if parsed.path.startswith("/l/"):
-            # Extraemos el parámetro 'uddg' que contiene la URL codificada
             params = urllib.parse.parse_qs(parsed.query)
-            url = params.get("uddg", [None])[0]
-            return url
-
-def duck_Search(user):
-    ls = user.split(' ')
-    search = '+'.join(ls)
-    url = f'https://duckduckgo.com/?t=h_&q={search}'
-    return url
+            final_url = params.get("uddg", [None])[0]
+            return final_url
+        

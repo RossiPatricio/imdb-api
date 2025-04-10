@@ -18,11 +18,22 @@ def scrap_imdb(search):
     crew= []
     for name in names[1:6]:
         crew.append(name.text)
+    
+    media = soup.find('div', class_='ipc-poster ipc-poster--baseAlt ipc-poster--media-radius ipc-poster--wl-true ipc-poster--dynamic-width ipc-sub-grid-item ipc-sub-grid-item--span-2')
+    viewer = media.a['href']
+    
+    url2 = f'https://www.imdb.com/{viewer}'
+    response2 = requests.get(url2, headers=headers)
+    soup2 = BeautifulSoup(response2.content, 'html.parser')
+    
+    image = soup2.find('div', class_='sc-7c0a9e7c-2 hXyMhR')
+    img = image.img['src']
 
-    return (
-        f"TITLE: {title}\n"
-        f"DIRECTOR: {director}\n"
-        f"SYNOPSIS: {resume}\n"
-        f"{crew}\n"
-        f"[{url}]"
-    )
+    dic = {
+        'TITLE': title.upper(),
+        'DIRECTOR': director,
+        'SYNOPSIS': resume,
+        'TEAM': crew,
+        'POSTER': img
+    }
+    return dic
