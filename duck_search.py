@@ -24,4 +24,3 @@ def get_url(search):
             params = urllib.parse.parse_qs(parsed.query)
             final_url = params.get("uddg", [None])[0]
             return final_url
-        

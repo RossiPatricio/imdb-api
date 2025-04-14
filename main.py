@@ -15,4 +15,5 @@ with open(archivo, 'r') as file_object:
         data = movie_info(line)
         lista_de_diccionarios.append(data)
 
-print(lista_de_diccionarios)
+for movie in lista_de_diccionarios:
+    print(movie)

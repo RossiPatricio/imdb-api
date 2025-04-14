@@ -35,3 +35,8 @@
 +---------------+
         | Guardar en base de datos
         v
+
+si le agrego que devuelva 3 peliculas por titulo en vez de 1 tendria un buscador de peliculas? 
+que te muestre 3 opciones para que elijas la correcta ... 
+
+seria entonces una api de busqueda de peliculas?
