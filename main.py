@@ -1,7 +1,7 @@
 from scraping_imdb import *
 from duck_search import *
 
-archivo = r'C:\Users\PRossi\code\.programming\.PROJECTS\4- imdb-api-main\imdb-api\movies.txt'
+archivo = r'C:\Users\PRossi\code\.programming\.PROJECTS\4- imdb-api\imdb-api\movies.txt'
 
 def movie_info(element):
     url = get_url(element)
