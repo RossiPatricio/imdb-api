@@ -11,7 +11,7 @@ def duck_search(termino):
     for first_url in soup.select(".result__title a"):
         enlace = first_url["href"]
         resultados.append(enlace)
-
+    
     return resultados[:1]
 
 def get_url(search):
